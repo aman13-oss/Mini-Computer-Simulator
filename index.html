@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Computer Simulator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- binary to decimal -->
+    <h1>Mini Computer Simulator</h1>
+    <h2>Binary Calculator</h2>
+
+    <label>Enter Binary Number: </label>
+    <input type="text" id="binaryInput">
+    <button onclick="convertBinary()">Convert</button>
+    <p id="decimalResult"></p>
+
+    <!-- decimal to binary -->
+    <hr>
+    <h2>Decimal to Binary</h2>
+    <label>Enter Decimal Number: </label>
+    <input type="text" id="decimalInput">
+    <button onclick="convertDecimal()">Convert</button>
+    <p id="binaryResult"></p>
+    
+
+    <!-- binary Addition -->
+
+    <hr>
+    <h2>Binary Addition</h2>
+    <label>Binary A</label>
+    <input type="text" id="binaryA">
+
+    <br><br>
+
+    <label>Binary B</label>
+    <input type="text" id="binaryB">
+
+    <br><br>
+
+    <button onclick="addBinary()">ADD</button>
+    <p id="additionResult"></p>
+    
+    <hr>
+
+    <h2>ALU Simulator</h2>
+
+    <label>Input A: </label>
+    <input type="text" id="aluA">
+
+    <br><br>
+
+    <label>Input B:</label>
+    <input type="text" id="aluB">
+
+    <br><br>
+
+    <select id="operations">
+        <option value="ADD">ADD</option>
+        <option value="SUB">SUB</option>
+        <option value="AND">AND</option>
+        <option value="OR">OR</option>
+        <option value="XOR">XOR</option>
+        <option value="NOT">NOT</option>
+    </select>
+
+    <br><br>
+
+    <button onclick="runAlu()">Execute</button>
+    <p id="executeResult"></p>
+
+    <hr>
+
+    <h2>CPU Registers</h2>
+    <div id="registers">
+        <p>RO: <span id="RO">0000</span></p>
+        <p>R1: <span id="R1">0000</span></p>
+        <p>R2: <span id="R2">0000</span></p>
+        <p>R3: <span id="R3">0000</span></p>
+    </div>
+
+    <h3>Load Date into Registers</h3>
+    <label>Registers:</label>
+    <select id="registerSelect">
+        <option value="RO">RO</option>
+        <option value="R1">R1</option>
+        <option value="R2">R2</option>
+        <option value="R3">R3</option>
+    </select>
+
+    <br><br>
+
+    <label>Binary Value</label>
+    <input type="text" id="registerValue">
+    <button onclick="loadRegister()">LOAD</button>
+    
+
+    <script src="script.js"></script>
+</body>
+</html>
