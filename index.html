@@ -6,96 +6,256 @@
     <title>Mini Computer Simulator</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <!-- binary to decimal -->
+
+<header>
     <h1>Mini Computer Simulator</h1>
-    <h2>Binary Calculator</h2>
+    <p>COA Educational Simulator</p>
+</header>
 
-    <label>Enter Binary Number: </label>
-    <input type="text" id="binaryInput">
-    <button onclick="convertBinary()">Convert</button>
-    <p id="decimalResult"></p>
+<main>
 
-    <!-- decimal to binary -->
-    <hr>
-    <h2>Decimal to Binary</h2>
-    <label>Enter Decimal Number: </label>
-    <input type="text" id="decimalInput">
-    <button onclick="convertDecimal()">Convert</button>
-    <p id="binaryResult"></p>
-    
+    <section class="card">
 
-    <!-- binary Addition -->
+        <h2>Binary Calculator</h2>
 
-    <hr>
-    <h2>Binary Addition</h2>
-    <label>Binary A</label>
-    <input type="text" id="binaryA">
+        <label>Enter Binary Number: </label>
+        <input type="text" id="binaryInput">
+        <button onclick="convertBinary()">Convert</button>
+        <p id="decimalResult"></p>
 
-    <br><br>
+        <hr>
 
-    <label>Binary B</label>
-    <input type="text" id="binaryB">
+        <h2>Decimal to Binary</h2>
 
-    <br><br>
+        <label>Enter Decimal Number: </label>
+        <input type="text" id="decimalInput">
+        <button onclick="convertDecimal()">Convert</button>
+        <p id="binaryResult"></p>
 
-    <button onclick="addBinary()">ADD</button>
-    <p id="additionResult"></p>
-    
-    <hr>
+        <hr>
 
-    <h2>ALU Simulator</h2>
+        <h2>Binary Addition</h2>
 
-    <label>Input A: </label>
-    <input type="text" id="aluA">
+        <label>Binary A</label>
+        <input type="text" id="binaryA">
 
-    <br><br>
+        <br><br>
 
-    <label>Input B:</label>
-    <input type="text" id="aluB">
+        <label>Binary B</label>
+        <input type="text" id="binaryB">
 
-    <br><br>
+        <br><br>
 
-    <select id="operations">
-        <option value="ADD">ADD</option>
-        <option value="SUB">SUB</option>
-        <option value="AND">AND</option>
-        <option value="OR">OR</option>
-        <option value="XOR">XOR</option>
-        <option value="NOT">NOT</option>
-    </select>
+        <button onclick="addBinary()">ADD</button>
+        <p id="additionResult"></p>
 
-    <br><br>
+    </section>
 
-    <button onclick="runAlu()">Execute</button>
-    <p id="executeResult"></p>
 
-    <hr>
+    <section class="card">
 
-    <h2>CPU Registers</h2>
-    <div id="registers">
-        <p>RO: <span id="RO">0000</span></p>
-        <p>R1: <span id="R1">0000</span></p>
-        <p>R2: <span id="R2">0000</span></p>
-        <p>R3: <span id="R3">0000</span></p>
-    </div>
+        <h2>ALU Simulator</h2>
 
-    <h3>Load Date into Registers</h3>
-    <label>Registers:</label>
-    <select id="registerSelect">
-        <option value="RO">RO</option>
-        <option value="R1">R1</option>
-        <option value="R2">R2</option>
-        <option value="R3">R3</option>
-    </select>
+        <label>Input A: </label>
+        <input type="text" id="aluA">
 
-    <br><br>
+        <br><br>
 
-    <label>Binary Value</label>
-    <input type="text" id="registerValue">
-    <button onclick="loadRegister()">LOAD</button>
-    
+        <label>Input B:</label>
+        <input type="text" id="aluB">
 
-    <script src="script.js"></script>
+        <br><br>
+
+        <select id="operations">
+            <option value="ADD">ADD</option>
+            <option value="SUB">SUB</option>
+            <option value="AND">AND</option>
+            <option value="OR">OR</option>
+            <option value="XOR">XOR</option>
+            <option value="NOT">NOT</option>
+        </select>
+
+        <br><br>
+
+        <button onclick="runAlu()">Execute</button>
+        <p id="executeResult"></p>
+
+    </section>
+
+
+    <section class="card">
+
+        <h2>CPU Registers</h2>
+
+        <div id="registers">
+            <p>RO: <span id="RO">0000</span></p>
+            <p>R1: <span id="R1">0000</span></p>
+            <p>R2: <span id="R2">0000</span></p>
+            <p>R3: <span id="R3">0000</span></p>
+        </div>
+
+        <h3>Load Data into Registers</h3>
+
+        <label>Registers:</label>
+
+        <select id="registerSelect">
+            <option value="RO">RO</option>
+            <option value="R1">R1</option>
+            <option value="R2">R2</option>
+            <option value="R3">R3</option>
+        </select>
+
+        <br><br>
+
+        <label>Binary Value</label>
+        <input type="text" id="registerValue">
+
+        <button onclick="loadRegister()">LOAD</button>
+
+    </section>
+
+
+    <section class="card">
+
+        <h2>CPU Control Unit</h2>
+
+        <p>
+            Program Counter (PC):
+            <span id="programCounter">0</span>
+        </p>
+
+        <p>
+            Instruction Register (IR):
+            <span id="instructionRegister">---</span>
+        </p>
+
+        <h3>Instruction Cycle</h3>
+
+        <p id="fetchStatus">FETCH</p>
+
+        <p id="decodeStatus">DECODE</p>
+
+        <p id="executeStatus">EXECUTE</p>
+
+        <button onclick="stepCPU()">STEP</button>
+
+        <button onclick="runCPU()">RUN CPU</button>
+
+        <button onclick="resetCPU()">RESET CPU</button>
+
+    </section>
+
+
+    <section class="card">
+
+        <h2>CPU Instruction Program</h2>
+
+        <p>Enter instruction:</p>
+
+        <textarea id="programInput" rows="8" cols="40" placeholder="LOADI R1, 1010
+LOADI R2, 0011
+ADD R1, R2
+STORE R3, 2"></textarea>
+
+        <br><br>
+
+        <button onclick="loadProgram()">LOAD PROGRAM</button>
+
+        <button onclick="resetCPU()">RESET</button>
+
+        <h3>Program Output</h3>
+
+        <p id="programOutput"></p>
+
+    </section>
+
+
+    <section class="card">
+
+        <h2>Cache Memory</h2>
+
+        <p>
+            Cache Hit:
+            <span id="cacheHit">0</span>
+        </p>
+
+        <p>
+            Cache Miss:
+            <span id="cacheMiss">0</span>
+        </p>
+
+        <p>
+            Status:
+            <span id="cacheStatus">IDLE</span>
+        </p>
+
+        <h3>Cache Entries</h3>
+
+        <p id="cacheDisplay">Empty</p>
+
+    </section>
+
+
+    <section class="card">
+
+        <h2>Main Memory (RAM)</h2>
+
+        <table border="1">
+
+            <tr>
+                <th>Address</th>
+                <th>Data</th>
+            </tr>
+
+            <tr>
+                <td>0</td>
+                <td id="memory-0">0000</td>
+            </tr>
+
+            <tr>
+                <td>1</td>
+                <td id="memory-1">0000</td>
+            </tr>
+
+            <tr>
+                <td>2</td>
+                <td id="memory-2">0000</td>
+            </tr>
+
+            <tr>
+                <td>3</td>
+                <td id="memory-3">0000</td>
+            </tr>
+
+            <tr>
+                <td>4</td>
+                <td id="memory-4">0000</td>
+            </tr>
+
+            <tr>
+                <td>5</td>
+                <td id="memory-5">0000</td>
+            </tr>
+
+            <tr>
+                <td>6</td>
+                <td id="memory-6">0000</td>
+            </tr>
+
+            <tr>
+                <td>7</td>
+                <td id="memory-7">0000</td>
+            </tr>
+
+        </table>
+
+    </section>
+
+</main>
+
+<script src="script.js"></script>
+
 </body>
 </html>

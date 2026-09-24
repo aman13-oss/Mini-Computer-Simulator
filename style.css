@@ -1,0 +1,82 @@
+body {
+    background-color: lightgray;
+    color: black;
+    font-family: Arial;
+    margin: 20px;
+}
+
+h1 {
+    color:burlywood
+}
+
+h2 {
+    color: darkblue;
+}
+
+header {
+    background-color: white;
+    padding: 15px;
+    border: 1px solid black;
+}
+
+main {
+    margin-top: 20px;
+}
+
+.card {
+    background-color: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 1px solid black;
+}
+
+input {
+    padding: 5px;
+}
+
+select {
+    padding: 5px;
+}
+
+textarea {
+    padding: 5px;
+}
+
+button {
+    background-color: pink;
+    color: white;
+    padding: 8px;
+    border: 1px solid black;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    background-color: lightblue;
+}
+
+th,
+td {
+    padding: 10px;
+    border: 1px solid black;
+    text-align: center;
+}
+
+#registers {
+    display: flex;
+    gap: 20px;
+}
+
+#registers p {
+    background-color: lightblue;
+    padding: 10px;
+}
+
+#programOutput {
+    background-color:beige;
+    font-weight: bold;
+    padding: 10px;
+}
