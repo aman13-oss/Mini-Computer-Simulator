@@ -591,35 +591,39 @@ function runCPU() {
         "Program executed successfully!";
 }
 
-
-// Reset CPU
+// Reset CPU and Simulator State
 
 function resetCPU() {
 
-    registers.RO = "0000";
-    registers.R1 = "0000";
-    registers.R2 = "0000";
-    registers.R3 = "0000";
+    // 1. Reset CPU registers
+    registers = {
+        RO: "0000",
+        R1: "0000",
+        R2: "0000",
+        R3: "0000"
+    };
 
+    for (let registerName of Object.keys(registers)) {
+        document.getElementById(registerName).innerText =
+            registers[registerName];
+    }
 
-    document.getElementById("RO").innerText =
-        "0000";
-
-    document.getElementById("R1").innerText =
-        "0000";
-
-    document.getElementById("R2").innerText =
-        "0000";
-
-    document.getElementById("R3").innerText =
-        "0000";
-
-
+    // 2. Reset Program Counter, Instruction Register and program
     PC = 0;
     IR = "";
     programMemory = [];
 
+    document.getElementById("programCounter").innerText = "0";
+    document.getElementById("instructionRegister").innerText = "---";
+    document.getElementById("programInput").value = "";
+    document.getElementById("programOutput").innerText = "";
 
+    // 3. Reset instruction cycle status
+    document.getElementById("fetchStatus").innerText = "FETCH";
+    document.getElementById("decodeStatus").innerText = "DECODE";
+    document.getElementById("executeStatus").innerText = "EXECUTE";
+
+    // 4. Reset RAM
     memory = {
         0: "0000",
         1: "0000",
@@ -631,54 +635,42 @@ function resetCPU() {
         7: "0000"
     };
 
-
     for (let address = 0; address < 8; address++) {
-
-        document.getElementById(
-            "memory-" + address
-        ).innerText =
-            "0000";
+        document.getElementById("memory-" + address).innerText =
+            memory[address];
     }
 
+    // 5. Reset cache and cache statistics
+    cache = {};
+    cacheHit = 0;
+    cacheMiss = 0;
 
-    document.getElementById(
-        "programCounter"
-    ).innerText =
-        "0";
+    document.getElementById("cacheHit").innerText = "0";
+    document.getElementById("cacheMiss").innerText = "0";
+    document.getElementById("cacheStatus").innerText = "IDLE";
+    document.getElementById("cacheDisplay").innerText = "Empty";
 
+    // 6. Clear calculator inputs and results
+    const inputIds = [
+        "binaryInput",
+        "decimalInput",
+        "binaryA",
+        "binaryB",
+        "aluA",
+        "aluB",
+        "registerValue"
+    ];
 
-    document.getElementById(
-        "instructionRegister"
-    ).innerText =
-        "---";
+    for (let id of inputIds) {
+        document.getElementById(id).value = "";
+    }
 
+    document.getElementById("decimalResult").innerText = "";
+    document.getElementById("binaryResult").innerText = "";
+    document.getElementById("additionResult").innerText = "";
+    document.getElementById("executeResult").innerText = "";
 
-    document.getElementById(
-        "fetchStatus"
-    ).innerText =
-        "FETCH";
-
-
-    document.getElementById(
-        "decodeStatus"
-    ).innerText =
-        "DECODE";
-
-
-    document.getElementById(
-        "executeStatus"
-    ).innerText =
-        "EXECUTE";
-
-
-    document.getElementById(
-        "programOutput"
-    ).innerText =
-        "";
-
-
-    document.getElementById(
-        "programInput"
-    ).value =
-        "";
+    // 7. Restore default selections
+    document.getElementById("operations").value = "ADD";
+    document.getElementById("registerSelect").value = "RO";
 }
